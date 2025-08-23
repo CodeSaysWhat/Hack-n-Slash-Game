@@ -1,0 +1,87 @@
+[gd_scene load_steps=4 format=3 uid="uid://ct5jafpuq38pn"]
+
+[ext_resource type="Theme" uid="uid://dk85ajm85yjx8" path="res://MyTheme.tres" id="1_syfuq"]
+[ext_resource type="Script" uid="uid://dguv50tigr2or" path="res://Script/menu.gd" id="1_uubjt"]
+[ext_resource type="Texture2D" uid="uid://5x3djw4ij25p" path="res://Assets/tiles and background_foreground (new)/background.png" id="2_5yleq"]
+
+[node name="Menu" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_syfuq")
+script = ExtResource("1_uubjt")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.088
+anchor_right = 0.997
+anchor_bottom = 0.901
+offset_top = 61.024
+offset_right = -0.544067
+offset_bottom = 61.152
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.09
+anchor_right = 1.0
+anchor_bottom = 0.904
+offset_top = 63.32
+offset_right = -912.0
+offset_bottom = -419.792
+scale = Vector2(4.78187, 3.99779)
+texture = ExtResource("2_5yleq")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.205
+anchor_top = 0.186728
+anchor_right = 0.795
+anchor_bottom = 0.334679
+offset_left = -0.160019
+offset_top = 61.0
+offset_right = 0.159973
+offset_bottom = 61.128
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 80
+text = "Hack n' Slash Game"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.385069
+anchor_top = 0.603
+anchor_right = 0.615
+anchor_bottom = 0.89
+offset_left = 0.399994
+offset_top = 0.255981
+offset_right = 0.52002
+offset_bottom = 0.279968
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 15
+metadata/_edit_use_anchors_ = true
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+text = "START"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "QUIT"
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

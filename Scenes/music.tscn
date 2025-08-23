@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1pspctn7x7up"]
+
+[ext_resource type="AudioStream" uid="uid://bh6fp71njpml3" path="res://Assets/Joshua McLean - Mountain Trials ♫ NO COPYRIGHT 8-bit Music.mp3" id="1_fbmny"]
+
+[node name="Music" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_fbmny")
+autoplay = true

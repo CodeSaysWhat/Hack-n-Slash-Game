@@ -1,0 +1,39 @@
+[gd_scene load_steps=9 format=3 uid="uid://c4qvmqxrtk2lt"]
+
+[ext_resource type="Script" uid="uid://h7bsjl3hutel" path="res://Script/audioManager.gd" id="1_yq78e"]
+[ext_resource type="AudioStream" uid="uid://cop6a6bpemkt1" path="res://Assets/Sounds/BGM.mp3" id="2_x8qvj"]
+[ext_resource type="AudioStream" uid="uid://cyhn4bb8dd27k" path="res://Assets/Sounds/JumpSFX.mp3" id="3_ncvnl"]
+[ext_resource type="AudioStream" uid="uid://g2mkgau5l48p" path="res://Assets/Sounds/SlashSFX.mp3" id="4_yq78e"]
+[ext_resource type="AudioStream" uid="uid://2wycaw3bxw0j" path="res://Assets/Sounds/HurtSFX.mp3" id="5_ncvnl"]
+[ext_resource type="AudioStream" uid="uid://b2qgslh5ls680" path="res://Assets/Sounds/HealedSFX.mp3" id="6_vbys1"]
+[ext_resource type="AudioStream" uid="uid://iqxy5tjldumu" path="res://Assets/Sounds/RunSFX.mp3" id="7_vbys1"]
+[ext_resource type="AudioStream" uid="uid://3vtbhcl75tip" path="res://Assets/Sounds/SelectSFX.mp3" id="8_va48u"]
+
+[node name="AudioManager" type="Node2D"]
+script = ExtResource("1_yq78e")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_x8qvj")
+volume_db = -10.0
+autoplay = true
+
+[node name="Jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ncvnl")
+volume_db = -2.0
+
+[node name="Slash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_yq78e")
+volume_db = -5.0
+
+[node name="Hurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ncvnl")
+
+[node name="Healed" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_vbys1")
+
+[node name="Run" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_vbys1")
+volume_db = -2.0
+
+[node name="Select" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_va48u")

@@ -1,0 +1,127 @@
+[gd_scene load_steps=8 format=3 uid="uid://dpcn2bdy6bgvt"]
+
+[ext_resource type="Shader" uid="uid://byuqbck466ncu" path="res://Shader/PauseMenu.gdshader" id="1_4646a"]
+[ext_resource type="Script" uid="uid://ctpedxbwe3qjv" path="res://Script/endLevel.gd" id="1_ln5px"]
+[ext_resource type="Theme" uid="uid://dk85ajm85yjx8" path="res://MyTheme.tres" id="1_xht5v"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ln5px"]
+shader = ExtResource("1_4646a")
+shader_parameter/lod = 1.0
+
+[sub_resource type="Animation" id="Animation_qg8xq"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/lod")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.15, 0, 0.15, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_q775a"]
+resource_name = "blur"
+length = 0.3
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/lod")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.15, 0, 0.15, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_36k83"]
+_data = {
+&"RESET": SubResource("Animation_qg8xq"),
+&"blur": SubResource("Animation_q775a")
+}
+
+[node name="EndLevel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_xht5v")
+script = ExtResource("1_ln5px")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_ln5px")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.311
+anchor_top = 0.252
+anchor_right = 0.689
+anchor_bottom = 0.748
+offset_left = -0.272034
+offset_top = 0.203995
+offset_right = 0.271973
+offset_bottom = -0.20401
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -268.0
+offset_top = -164.5
+offset_right = 268.0
+offset_bottom = -68.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 90
+text = "Level Complete!"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.446
+anchor_top = 0.5
+anchor_right = 0.554
+anchor_bottom = 0.667
+offset_left = -28.792
+offset_top = 41.0
+offset_right = 28.792
+offset_bottom = 36.784
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_xht5v")
+theme_override_constants/separation = 15
+
+[node name="RetryButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "RETRY"
+
+[node name="MainMenuButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "MAIN MENU"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_36k83")
+}
+
+[connection signal="pressed" from="VBoxContainer/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
